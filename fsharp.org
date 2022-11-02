@@ -29,6 +29,14 @@ You will find function definitions are very close to your math function notation
 let len (s : string) = s.length()
 #+END_SRC
 
+Using parentheses in this case is fairly straight forward. But it is generally used to write a function that takes in a [[wikipedia:Tuple][tuple]]
+
+#+BEGIN_SRC fsharp
+let add (a, b) = a + b //function that takes in the tuple (a`, b`)
+let add a b = a + b // function that takes 2 arguments: a and b
+#+END_SRC
+
+
 Functions can also be nested to do sub calculations
 #+BEGIN_SRC fsharp
 let evens list =
@@ -37,10 +45,30 @@ let evens list =
     List.filter list even
 #+END_SRC
 
-`List.filter` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean \(int\mapsto boolean\), passing a function as an argument (or returns a function as the return type) is known as a "higher order function" and is a core principle of functional programming
-
+`List.filter` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean, in this case \(int\mapsto boolean\). Passing a function as an argument (or returns a function as the return type) is known as a "higher order function" and is a core principle of functional programming
 **** Partial Application
+Partial application is a cool trick to essentially "bake in" a function parameter. Instead of default parameters that we get in c-type languages we can use partial application to have constant arguments to functions to make some operations cleaner
+
+#+BEGIN_SRC fsharp
+let add x y = x + y
+
+let add2 = add 2
+
+let x = add2 2 //x will be 4
+#+END_SRC
+
+in a real world example
+#+BEGIN_SRC fsharp
+let log serverity message = printfn "Severity: %s Message: %s"
+
+let logError = log "Error"
+
+logError "Something Bad Happened"
+
+#+END_SRC
+
 **** Composition
+Function composition is a mathematical concept of combining 2 functions into a third function \[f\circ g(x) = f(g(x)\]
 **** Currying
 **** Pipes
 *** Pattern Matching

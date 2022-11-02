@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#org2176a47)
-    1.  [Basics](#orgfc4b6ed)
-        1.  [Variables, Functions.. both?](#org46940ed)
-        2.  [Functions](#org85df4a0)
-        3.  [Pattern Matching](#orgdc4455a)
-    2.  [Simple program](#org0635091)
-    3.  [Lets do the internet](#org24a0c0c)
-    4.  [Data?](#orgf37f7df)
-    5.  [Dockerizing everything](#org56b0990)
+1.  [FSharp notes](#org2a953b4)
+    1.  [Basics](#orgce83620)
+        1.  [Variables, Functions.. both?](#orga750ce7)
+        2.  [Functions](#org68ddd41)
+        3.  [Pattern Matching](#orga24e89e)
+    2.  [Simple program](#org560c022)
+    3.  [Lets do the internet](#org85ab464)
+    4.  [Data?](#org606c1cc)
+    5.  [Dockerizing everything](#orgf11acf0)
 
 
-<a id="org2176a47"></a>
+<a id="org2a953b4"></a>
 
 # FSharp notes
 
 
-<a id="orgfc4b6ed"></a>
+<a id="orgce83620"></a>
 
 ## Basics
 
 
-<a id="org46940ed"></a>
+<a id="orga750ce7"></a>
 
 ### Variables, Functions.. both?
 
@@ -41,7 +41,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="org85df4a0"></a>
+<a id="org68ddd41"></a>
 
 ### Functions
 
@@ -53,6 +53,11 @@ You will find function definitions are very close to your math function notation
 
     let len (s : string) = s.length()
 
+Using parentheses in this case is fairly straight forward. But it is generally used to write a function that takes in a [tuple](https://en.wikipedia.org/wiki/Tuple)
+
+    let add (a, b) = a + b //function that takes in the tuple (a`, b`)
+    let add a b = a + b // function that takes 2 arguments: a and b
+
 Functions can also be nested to do sub calculations
 
     let evens list =
@@ -60,38 +65,56 @@ Functions can also be nested to do sub calculations
     
         List.filter list even
 
-\`List.filter\` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean $int\mapsto boolean$, passing a function as an argument (or returns a function as the return type) is known as a &ldquo;higher order function&rdquo; and is a core principle of functional programming
+\`List.filter\` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean, in this case $int\mapsto boolean$. Passing a function as an argument (or returns a function as the return type) is known as a &ldquo;higher order function&rdquo; and is a core principle of functional programming
 
 1.  Partial Application
 
+    Partial application is a cool trick to essentially &ldquo;bake in&rdquo; a function parameter. Instead of default parameters that we get in c-type languages we can use partial application to have constant arguments to functions to make some operations cleaner
+    
+        let add x y = x + y
+        
+        let add2 = add 2
+        
+        let x = add2 2 //x will be 4
+    
+    in a real world example
+    
+        let log serverity message = printfn "Severity: %s Message: %s"
+        
+        let logError = log "Error"
+        
+        logError "Something Bad Happened"
+
 2.  Composition
+
+    Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x)$$
 
 3.  Currying
 
 4.  Pipes
 
 
-<a id="orgdc4455a"></a>
+<a id="orga24e89e"></a>
 
 ### Pattern Matching
 
 
-<a id="org0635091"></a>
+<a id="org560c022"></a>
 
 ## Simple program
 
 
-<a id="org24a0c0c"></a>
+<a id="org85ab464"></a>
 
 ## Lets do the internet
 
 
-<a id="orgf37f7df"></a>
+<a id="org606c1cc"></a>
 
 ## Data?
 
 
-<a id="org56b0990"></a>
+<a id="orgf11acf0"></a>
 
 ## Dockerizing everything
 
