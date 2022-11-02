@@ -1,27 +1,28 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#orga54dbd7)
-    1.  [Basics](#org8c0fc3c)
-        1.  [Variables, Functions.. both?](#org384ec6e)
-        2.  [Functions](#orgba8382c)
-    2.  [Simple program](#org670ef72)
-    3.  [Lets do the internet](#org3853e0c)
-    4.  [Data?](#org73ee485)
-    5.  [Dockerizing everything](#orgcee8859)
+1.  [FSharp notes](#orgdb27d45)
+    1.  [Basics](#org7bf02ea)
+        1.  [Variables, Functions.. both?](#org8e8c867)
+        2.  [Functions](#orgc88b547)
+        3.  [Pattern Matching](#org9ed2dc0)
+    2.  [Simple program](#org61692f0)
+    3.  [Lets do the internet](#org77ee419)
+    4.  [Data?](#org2973ce8)
+    5.  [Dockerizing everything](#orga305caf)
 
 
-<a id="orga54dbd7"></a>
+<a id="orgdb27d45"></a>
 
 # FSharp notes
 
 
-<a id="org8c0fc3c"></a>
+<a id="org7bf02ea"></a>
 
 ## Basics
 
 
-<a id="org384ec6e"></a>
+<a id="org8e8c867"></a>
 
 ### Variables, Functions.. both?
 
@@ -29,13 +30,18 @@ F# is a functional language. Its often joked that <span class="underline">everyt
 
     let x = 10
 
-Calling function &rsquo;x&rsquo; returns 10. \`x\` is immutable, meaning it will always return 10 and cannot be changed. This makes sense if we think of it as a function, functions cannot be reassigned and you cant have 2 with the same signature. If we need a variable that can be changed, which is rarer than you think, you have to use the &ldquo;mutable&rdquo; keyword
+Calling function &rsquo;x&rsquo; returns 10. \`x\` is immutable, meaning it will always return 10 and cannot be changed. This makes sense if we think of it as a function, functions cannot be reassigned and you cant have 2 with the same signature. Comparing variables gets a little weird as well since we use the single &rsquo;=&rsquo; for both assignment and value comparison
+
+    let x = 10
+    println x = 10 // prints true
+
+If we need a variable that can be changed, which is rarer than you think, you have to use the &ldquo;mutable&rdquo; keyword
 
     let mutable x = 10
     x <- x + 1
 
 
-<a id="orgba8382c"></a>
+<a id="orgc88b547"></a>
 
 ### Functions
 
@@ -43,25 +49,49 @@ Defining a function in F# is the same as defining a variable, since as discussed
 
     let square x = x * x
 
-You will find function definitions are very close to your math function notation $f(x) = x*x$.
+You will find function definitions are very close to your math function notation $f(x) = x*x$. The biggest thing to get used to in F# is type inference. You almost never have to specify a type for a function. The biggest reason to use a type directive in F# is to use an object type (C# Type) so you can access the members of that object
+
+    let len (s : string) = s.length()
+
+Functions can also be nested to do sub calculations
+
+    let evens list =
+        let even x = x % 2 = 0
+    
+        List.filter list even
+
+\`List.filter\` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean $int \RightArrow boolean$, passing a function as an argument (or returns a function as the return type) is known as a &ldquo;higher order function&rdquo; and is a core principle of functional programming
+
+1.  Partial Application
+
+2.  Composition
+
+3.  Currying
+
+4.  Pipes
 
 
-<a id="org670ef72"></a>
+<a id="org9ed2dc0"></a>
+
+### Pattern Matching
+
+
+<a id="org61692f0"></a>
 
 ## Simple program
 
 
-<a id="org3853e0c"></a>
+<a id="org77ee419"></a>
 
 ## Lets do the internet
 
 
-<a id="org73ee485"></a>
+<a id="org2973ce8"></a>
 
 ## Data?
 
 
-<a id="orgcee8859"></a>
+<a id="orga305caf"></a>
 
 ## Dockerizing everything
 
