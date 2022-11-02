@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#org2a953b4)
-    1.  [Basics](#orgce83620)
-        1.  [Variables, Functions.. both?](#orga750ce7)
-        2.  [Functions](#org68ddd41)
-        3.  [Pattern Matching](#orga24e89e)
-    2.  [Simple program](#org560c022)
-    3.  [Lets do the internet](#org85ab464)
-    4.  [Data?](#org606c1cc)
-    5.  [Dockerizing everything](#orgf11acf0)
+1.  [FSharp notes](#orga3dc0e6)
+    1.  [Basics](#orgbcc0d1d)
+        1.  [Variables, Functions.. both?](#orgfd035bf)
+        2.  [Functions](#org4773f9e)
+        3.  [Pattern Matching](#org282ca07)
+    2.  [Simple program](#orgc0abd4a)
+    3.  [Lets do the internet](#org9f4c1f3)
+    4.  [Data?](#orgc27111a)
+    5.  [Dockerizing everything](#org9536573)
 
 
-<a id="org2a953b4"></a>
+<a id="orga3dc0e6"></a>
 
 # FSharp notes
 
 
-<a id="orgce83620"></a>
+<a id="orgbcc0d1d"></a>
 
 ## Basics
 
 
-<a id="orga750ce7"></a>
+<a id="orgfd035bf"></a>
 
 ### Variables, Functions.. both?
 
@@ -41,7 +41,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="org68ddd41"></a>
+<a id="org4773f9e"></a>
 
 ### Functions
 
@@ -87,34 +87,39 @@ Functions can also be nested to do sub calculations
 
 2.  Composition
 
-    Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x)$$
+    Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x))$$ $$h = g\circ f$$ suchas $$h(x) = f(g(x))$$
+    
+        let add1 = add 1
+        let add2 = add 2
+        let add3 = add1 >> add2
+        let c = add3 7 // c is 3 + 7
 
 3.  Currying
 
 4.  Pipes
 
 
-<a id="orga24e89e"></a>
+<a id="org282ca07"></a>
 
 ### Pattern Matching
 
 
-<a id="org560c022"></a>
+<a id="orgc0abd4a"></a>
 
 ## Simple program
 
 
-<a id="org85ab464"></a>
+<a id="org9f4c1f3"></a>
 
 ## Lets do the internet
 
 
-<a id="org606c1cc"></a>
+<a id="orgc27111a"></a>
 
 ## Data?
 
 
-<a id="orgf11acf0"></a>
+<a id="org9536573"></a>
 
 ## Dockerizing everything
 
