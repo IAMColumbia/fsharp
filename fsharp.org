@@ -6,7 +6,14 @@ F# is a functional language. Its often joked that _everything_ is an object in c
 #+BEGIN_SRC fsharp
 let x = 10
 #+END_SRC
-Calling function 'x' returns 10. `x` is immutable, meaning it will always return 10 and cannot be changed. This makes sense if we think of it as a function, functions cannot be reassigned and you cant have 2 with the same signature. If we need a variable that can be changed, which is rarer than you think, you have to use the "mutable" keyword
+Calling function 'x' returns 10. `x` is immutable, meaning it will always return 10 and cannot be changed. This makes sense if we think of it as a function, functions cannot be reassigned and you cant have 2 with the same signature. Comparing variables gets a little weird as well since we use the single '=' for both assignment and value comparison
+
+#+BEGIN_SRC fsharp
+let x = 10
+println x = 10 // prints true
+#+END_SRC
+
+If we need a variable that can be changed, which is rarer than you think, you have to use the "mutable" keyword
 #+BEGIN_SRC fsharp
 let mutable x = 10
 x <- x + 1
@@ -17,7 +24,26 @@ Defining a function in F# is the same as defining a variable, since as discussed
 let square x = x * x
 #+END_SRC
 
-You will find function definitions are very close to your math function notation \(f(x) = x*x\).
+You will find function definitions are very close to your math function notation \(f(x) = x*x\). The biggest thing to get used to in F# is type inference. You almost never have to specify a type for a function. The biggest reason to use a type directive in F# is to use an object type (C# Type) so you can access the members of that object
+#+BEGIN_SRC fsharp
+let len (s : string) = s.length()
+#+END_SRC
+
+Functions can also be nested to do sub calculations
+#+BEGIN_SRC fsharp
+let evens list =
+    let even x = x % 2 = 0
+
+    List.filter list even
+#+END_SRC
+
+`List.filter` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean \(int \RightArrow boolean\), passing a function as an argument (or returns a function as the return type) is known as a "higher order function" and is a core principle of functional programming
+
+**** Partial Application
+**** Composition
+**** Currying
+**** Pipes
+*** Pattern Matching
 
 
 ** Simple program
