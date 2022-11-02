@@ -68,7 +68,15 @@ logError "Something Bad Happened"
 #+END_SRC
 
 **** Composition
-Function composition is a mathematical concept of combining 2 functions into a third function \[f\circ g(x) = f(g(x)\]
+Function composition is a mathematical concept of combining 2 functions into a third function \[f\circ g(x) = f(g(x))\] \[h = g\circ f\] suchas \[h(x) = f(g(x))\]
+
+#+BEGIN_SRC fsharp
+let add1 = add 1
+let add2 = add 2
+let add3 = add1 >> add2
+let c = add3 7 // c is 3 + 7
+#+END_SRC
+
 **** Currying
 **** Pipes
 *** Pattern Matching
