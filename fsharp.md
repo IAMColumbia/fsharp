@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#orgdb27d45)
-    1.  [Basics](#org7bf02ea)
-        1.  [Variables, Functions.. both?](#org8e8c867)
-        2.  [Functions](#orgc88b547)
-        3.  [Pattern Matching](#org9ed2dc0)
-    2.  [Simple program](#org61692f0)
-    3.  [Lets do the internet](#org77ee419)
-    4.  [Data?](#org2973ce8)
-    5.  [Dockerizing everything](#orga305caf)
+1.  [FSharp notes](#orgbd15df0)
+    1.  [Basics](#org178fc15)
+        1.  [Variables, Functions.. both?](#org667b318)
+        2.  [Functions](#org3fda44d)
+        3.  [Pattern Matching](#org7621529)
+    2.  [Simple program](#org57ad55a)
+    3.  [Lets do the internet](#org9c97557)
+    4.  [Data?](#orgee8b5f0)
+    5.  [Dockerizing everything](#org2cf693d)
 
 
-<a id="orgdb27d45"></a>
+<a id="orgbd15df0"></a>
 
 # FSharp notes
 
 
-<a id="org7bf02ea"></a>
+<a id="org178fc15"></a>
 
 ## Basics
 
 
-<a id="org8e8c867"></a>
+<a id="org667b318"></a>
 
 ### Variables, Functions.. both?
 
@@ -41,7 +41,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="orgc88b547"></a>
+<a id="org3fda44d"></a>
 
 ### Functions
 
@@ -60,7 +60,7 @@ Functions can also be nested to do sub calculations
     
         List.filter list even
 
-\`List.filter\` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean $int \RightArrow boolean$, passing a function as an argument (or returns a function as the return type) is known as a &ldquo;higher order function&rdquo; and is a core principle of functional programming
+\`List.filter\` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean $int\RightArrow boolean$, passing a function as an argument (or returns a function as the return type) is known as a &ldquo;higher order function&rdquo; and is a core principle of functional programming
 
 1.  Partial Application
 
@@ -71,27 +71,27 @@ Functions can also be nested to do sub calculations
 4.  Pipes
 
 
-<a id="org9ed2dc0"></a>
+<a id="org7621529"></a>
 
 ### Pattern Matching
 
 
-<a id="org61692f0"></a>
+<a id="org57ad55a"></a>
 
 ## Simple program
 
 
-<a id="org77ee419"></a>
+<a id="org9c97557"></a>
 
 ## Lets do the internet
 
 
-<a id="org2973ce8"></a>
+<a id="orgee8b5f0"></a>
 
 ## Data?
 
 
-<a id="orga305caf"></a>
+<a id="org2cf693d"></a>
 
 ## Dockerizing everything
 

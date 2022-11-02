@@ -37,7 +37,7 @@ let evens list =
     List.filter list even
 #+END_SRC
 
-`List.filter` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean \(int \RightArrow boolean\), passing a function as an argument (or returns a function as the return type) is known as a "higher order function" and is a core principle of functional programming
+`List.filter` is a system function to filter a list and it takes 2 arguments: a list and a function that returns a boolean \(int\RightArrow boolean\), passing a function as an argument (or returns a function as the return type) is known as a "higher order function" and is a core principle of functional programming
 
 **** Partial Application
 **** Composition
