@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#orga3dc0e6)
-    1.  [Basics](#orgbcc0d1d)
-        1.  [Variables, Functions.. both?](#orgfd035bf)
-        2.  [Functions](#org4773f9e)
-        3.  [Pattern Matching](#org282ca07)
-    2.  [Simple program](#orgc0abd4a)
-    3.  [Lets do the internet](#org9f4c1f3)
-    4.  [Data?](#orgc27111a)
-    5.  [Dockerizing everything](#org9536573)
+1.  [FSharp notes](#org6c7ed7b)
+    1.  [Basics](#org558a8e1)
+        1.  [Variables, Functions.. both?](#org656687b)
+        2.  [Functions](#orgc5f8e65)
+        3.  [Pattern Matching](#orgd6e6b66)
+    2.  [Simple program](#org6b2ef19)
+    3.  [Lets do the internet](#org8bef6c1)
+    4.  [Data?](#org3a62fef)
+    5.  [Dockerizing everything](#org6cd13df)
 
 
-<a id="orga3dc0e6"></a>
+<a id="org6c7ed7b"></a>
 
 # FSharp notes
 
 
-<a id="orgbcc0d1d"></a>
+<a id="org558a8e1"></a>
 
 ## Basics
 
 
-<a id="orgfd035bf"></a>
+<a id="org656687b"></a>
 
 ### Variables, Functions.. both?
 
@@ -41,7 +41,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="org4773f9e"></a>
+<a id="orgc5f8e65"></a>
 
 ### Functions
 
@@ -87,7 +87,9 @@ Functions can also be nested to do sub calculations
 
 2.  Composition
 
-    Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x))$$ $$h = g\circ f$$ suchas $$h(x) = f(g(x))$$
+    Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x))$$ $$h = g\circ f$$ $$h(x) = f(g(x))$$
+    
+    F# uses the &ldquo;>>&rdquo; operator to compose functions and combine them into a new function. Take the following example where we have 2 partial applications of the add function and we compose them together into a third function.
     
         let add1 = add 1
         let add2 = add 2
@@ -96,30 +98,34 @@ Functions can also be nested to do sub calculations
 
 3.  Currying
 
+    Currying and partial application seem to do the same thing but they are slightly different. Currying is taking a function that takes many arguments and turning it into many functions that take 1 argument and then using composition to calculate the final value. Partial application you can choose to use as many or as few arguments for a function wheras currying always uses unary (functions that take one argument) functions.
+    
+    Our add function $f(a, b) = a + b$ can be written in it&rsquo;s curried form as $a\mapsto b\mapsto a + b$. Currying isnt something we do every day but its essential to know what is happening under the hood as we write more and more complex applications.
+
 4.  Pipes
 
 
-<a id="org282ca07"></a>
+<a id="orgd6e6b66"></a>
 
 ### Pattern Matching
 
 
-<a id="orgc0abd4a"></a>
+<a id="org6b2ef19"></a>
 
 ## Simple program
 
 
-<a id="org9f4c1f3"></a>
+<a id="org8bef6c1"></a>
 
 ## Lets do the internet
 
 
-<a id="orgc27111a"></a>
+<a id="org3a62fef"></a>
 
 ## Data?
 
 
-<a id="org9536573"></a>
+<a id="org6cd13df"></a>
 
 ## Dockerizing everything
 
