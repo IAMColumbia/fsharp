@@ -1,28 +1,27 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#org6c7ed7b)
-    1.  [Basics](#org558a8e1)
-        1.  [Variables, Functions.. both?](#org656687b)
-        2.  [Functions](#orgc5f8e65)
-        3.  [Pattern Matching](#orgd6e6b66)
-    2.  [Simple program](#org6b2ef19)
-    3.  [Lets do the internet](#org8bef6c1)
-    4.  [Data?](#org3a62fef)
-    5.  [Dockerizing everything](#org6cd13df)
+1.  [FSharp notes](#org83cecf9)
+    1.  [Basics](#orga52f082)
+        1.  [Variables, Functions.. both?](#orgbb662e3)
+        2.  [Functions](#orgdb65419)
+    2.  [Types](#org50f6342)
+        1.  [Tuples](#org2352f57)
+        2.  [Records](#org1d6f214)
+        3.  [Discriminated Unions/Algebraic Types](#org4589654)
 
 
-<a id="org6c7ed7b"></a>
+<a id="org83cecf9"></a>
 
 # FSharp notes
 
 
-<a id="org558a8e1"></a>
+<a id="orga52f082"></a>
 
 ## Basics
 
 
-<a id="org656687b"></a>
+<a id="orgbb662e3"></a>
 
 ### Variables, Functions.. both?
 
@@ -41,7 +40,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="orgc5f8e65"></a>
+<a id="orgdb65419"></a>
 
 ### Functions
 
@@ -89,7 +88,7 @@ Functions can also be nested to do sub calculations
 
     Function composition is a mathematical concept of combining 2 functions into a third function $$f\circ g(x) = f(g(x))$$ $$h = g\circ f$$ $$h(x) = f(g(x))$$
     
-    F# uses the &ldquo;>>&rdquo; operator to compose functions and combine them into a new function. Take the following example where we have 2 partial applications of the add function and we compose them together into a third function.
+    F# uses the &ldquo;>>&rdquo; operator to compose functions and combine them into a new function. Take the following example where we have 2 partial applications of the add function and we compose them together into a third function. Composition is a valuable tool to at least be aware of because it happens all the time under the hood.
     
         let add1 = add 1
         let add2 = add 2
@@ -105,27 +104,55 @@ Functions can also be nested to do sub calculations
 4.  Pipes
 
 
-<a id="orgd6e6b66"></a>
+<a id="org50f6342"></a>
 
-### Pattern Matching
+## Types
 
-
-<a id="org6b2ef19"></a>
-
-## Simple program
+F# supports a much richer type system than most languages.
 
 
-<a id="org8bef6c1"></a>
+<a id="org2352f57"></a>
 
-## Lets do the internet
+### Tuples
+
+Tuples are ad-hoc data structures of any number of types
+
+    let pair = (10, 10) //declaring a tuple is just values wrapped in parentheses
+    let (x, y) = pair //using pattern matching we can "deconstruct" a tuple into individual values
+    let foo = (1, "foo", 12.5) // tuples can mix types
 
 
-<a id="org3a62fef"></a>
+<a id="org1d6f214"></a>
 
-## Data?
+### Records
+
+Records are, essentially, named tuples. Each value in a record has a label that can be used to access the corresponding value
+
+    type Point = { X: float; Y: float; Z: float; }
+    let p = { X = 1.0; Y = 2.0; Z = 3.0; } //record expression syntax
 
 
-<a id="org6cd13df"></a>
+<a id="org4589654"></a>
 
-## Dockerizing everything
+### Discriminated Unions/Algebraic Types
+
+Discriminated unions are special types that can be represented by a different type based on context
+
+    type Shape =
+        | Rectangle of width : float * length : float
+        | Circle of radius : float
+        | Prism of width : float * float * height : float
+    
+    let rect = Rectangle(length = 1.3, width = 10.0)
+    let circ = Circle (1.0)
+    let prism = Prism(5., 2.0, height = 3.0)
+
+The most used discriminated union is the \`Option\` type. To cleanly handle a variable that might have a value F# uses the Option type.
+
+    let printValue opt =
+        match opt with
+        | Some x -> printfn "%A" x
+        | None -> printfn "No value."
+
+wrapping a value in an option type and using pattern matching means that you can cleanly handle nulls vs other languages
 

@@ -86,3 +86,39 @@ Currying and partial application seem to do the same thing but they are slightly
 Our add function \(f(a, b) = a + b\) can be written in it's curried form as \(a\mapsto b\mapsto a + b\). Currying isnt something we do every day but its essential to know what is happening under the hood as we write more and more complex applications.
 **** Pipes
 ** Types
+F# supports a much richer type system than most languages.
+*** Tuples
+Tuples are ad-hoc data structures of any number of types
+#+BEGIN_SRC fsharp
+let pair = (10, 10) //declaring a tuple is just values wrapped in parentheses
+let (x, y) = pair //using pattern matching we can "deconstruct" a tuple into individual values
+let foo = (1, "foo", 12.5) // tuples can mix types
+#+END_SRC
+*** Records
+Records are, essentially, named tuples. Each value in a record has a label that can be used to access the corresponding value
+#+BEGIN_SRC fsharp
+type Point = { X: float; Y: float; Z: float; }
+let p = { X = 1.0; Y = 2.0; Z = 3.0; } //record expression syntax
+#+END_SRC
+*** Discriminated Unions/Algebraic Types
+Discriminated unions are special types that can be represented by a different type based on context
+#+BEGIN_SRC fsharp
+type Shape =
+    | Rectangle of width : float * length : float
+    | Circle of radius : float
+    | Prism of width : float * float * height : float
+
+let rect = Rectangle(length = 1.3, width = 10.0)
+let circ = Circle (1.0)
+let prism = Prism(5., 2.0, height = 3.0)
+#+END_SRC
+
+The most used discriminated union is the `Option` type. To cleanly handle a variable that might have a value F# uses the Option type.
+#+BEGIN_SRC fsharp
+let printValue opt =
+    match opt with
+    | Some x -> printfn "%A" x
+    | None -> printfn "No value."
+#+END_SRC
+
+wrapping a value in an option type and using pattern matching means that you can cleanly handle nulls vs other languages
