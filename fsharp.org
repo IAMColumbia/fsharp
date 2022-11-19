@@ -70,7 +70,7 @@ logError "Something Bad Happened"
 **** Composition
 Function composition is a mathematical concept of combining 2 functions into a third function \[f\circ g(x) = f(g(x))\] \[h = g\circ f\] \[h(x) = f(g(x))\]
 
-F# uses the ">>" operator to compose functions and combine them into a new function. Take the following example where we have 2 partial applications of the add function and we compose them together into a third function.
+F# uses the ">>" operator to compose functions and combine them into a new function. Take the following example where we have 2 partial applications of the add function and we compose them together into a third function. Composition is a valuable tool to at least be aware of because it happens all the time under the hood.
 
 #+BEGIN_SRC fsharp
 let add1 = add 1
@@ -79,18 +79,10 @@ let add3 = add1 >> add2
 let c = add3 7 // c is 3 + 7
 #+END_SRC
 
+
 **** Currying
 Currying and partial application seem to do the same thing but they are slightly different. Currying is taking a function that takes many arguments and turning it into many functions that take 1 argument and then using composition to calculate the final value. Partial application you can choose to use as many or as few arguments for a function wheras currying always uses unary (functions that take one argument) functions.
 
 Our add function \(f(a, b) = a + b\) can be written in it's curried form as \(a\mapsto b\mapsto a + b\). Currying isnt something we do every day but its essential to know what is happening under the hood as we write more and more complex applications.
 **** Pipes
-*** Pattern Matching
-
-
-** Simple program
-
-** Lets do the internet
-
-** Data?
-
-** Dockerizing everything
+** Types
