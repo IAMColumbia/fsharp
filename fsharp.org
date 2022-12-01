@@ -85,6 +85,25 @@ Currying and partial application seem to do the same thing but they are slightly
 
 Our add function \(f(a, b) = a + b\) can be written in it's curried form as \(a\mapsto b\mapsto a + b\). Currying isnt something we do every day but its essential to know what is happening under the hood as we write more and more complex applications.
 **** Pipes
+
+Pipes are, perhaps, my favorite feature of any language that supports them. This includes F#!
+
+#+BEGIN_SRC fsharp
+[1..100] |> List.filter (fun n -> n % 2 = 0) // generates a list from 1-100 and then filters it by even numbers
+#+END_SRC
+
+Using |> for delegates is the same concept as composing functions
+#+BEGIN_SRC fsharp
+let square x = x ** 2.0
+
+let triple x = x * 3
+
+
+let tripleSquare = square >> triple
+
+tripleSquare 3 //this is the same as calling triple(square 3)
+
+#+END_SRC
 ** Types
 F# supports a much richer type system than most languages.
 *** Tuples

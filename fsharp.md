@@ -1,27 +1,27 @@
 
 # Table of Contents
 
-1.  [FSharp notes](#org83cecf9)
-    1.  [Basics](#orga52f082)
-        1.  [Variables, Functions.. both?](#orgbb662e3)
-        2.  [Functions](#orgdb65419)
-    2.  [Types](#org50f6342)
-        1.  [Tuples](#org2352f57)
-        2.  [Records](#org1d6f214)
-        3.  [Discriminated Unions/Algebraic Types](#org4589654)
+1.  [FSharp notes](#org5cd5570)
+    1.  [Basics](#orgafbba7b)
+        1.  [Variables, Functions.. both?](#orgd382439)
+        2.  [Functions](#org02fc637)
+    2.  [Types](#org34c03df)
+        1.  [Tuples](#org64b669c)
+        2.  [Records](#orga37b014)
+        3.  [Discriminated Unions/Algebraic Types](#org98d87e7)
 
 
-<a id="org83cecf9"></a>
+<a id="org5cd5570"></a>
 
 # FSharp notes
 
 
-<a id="orga52f082"></a>
+<a id="orgafbba7b"></a>
 
 ## Basics
 
 
-<a id="orgbb662e3"></a>
+<a id="orgd382439"></a>
 
 ### Variables, Functions.. both?
 
@@ -40,7 +40,7 @@ If we need a variable that can be changed, which is rarer than you think, you ha
     x <- x + 1
 
 
-<a id="orgdb65419"></a>
+<a id="org02fc637"></a>
 
 ### Functions
 
@@ -103,15 +103,30 @@ Functions can also be nested to do sub calculations
 
 4.  Pipes
 
+    Pipes are, perhaps, my favorite feature of any language that supports them. This includes F#!
+    
+        [1..100] |> List.filter (fun n -> n % 2 = 0) // generates a list from 1-100 and then filters it by even numbers
+    
+    Using |> for delegates is the same concept as composing functions
+    
+        let square x = x ** 2.0
+        
+        let triple x = x * 3
+        
+        
+        let tripleSquare = square >> triple
+        
+        tripleSquare 3 //this is the same as calling triple(square 3)
 
-<a id="org50f6342"></a>
+
+<a id="org34c03df"></a>
 
 ## Types
 
 F# supports a much richer type system than most languages.
 
 
-<a id="org2352f57"></a>
+<a id="org64b669c"></a>
 
 ### Tuples
 
@@ -122,7 +137,7 @@ Tuples are ad-hoc data structures of any number of types
     let foo = (1, "foo", 12.5) // tuples can mix types
 
 
-<a id="org1d6f214"></a>
+<a id="orga37b014"></a>
 
 ### Records
 
@@ -132,7 +147,7 @@ Records are, essentially, named tuples. Each value in a record has a label that 
     let p = { X = 1.0; Y = 2.0; Z = 3.0; } //record expression syntax
 
 
-<a id="org4589654"></a>
+<a id="org98d87e7"></a>
 
 ### Discriminated Unions/Algebraic Types
 
